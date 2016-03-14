@@ -1,0 +1,18 @@
+<nav class="navbar navbar-static-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="main">
+        <span class="glyphicon glyphicon-home"></span> TennisClub
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="(label, state) in states" ng-class="{ active: $state.includes('{{state}}')}"><a ui-sref="{{state}}">{{label}}</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right acme-navbar-text">
+      </ul>
+    </div>
+  </div>
+</nav>

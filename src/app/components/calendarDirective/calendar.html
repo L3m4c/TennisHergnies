@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-6 text-center">
+        <div class="btn-group">
+            <button class="btn btn-primary ng-isolate-scope" mwl-date-modifier date="vm.calendarDay"
+                    decrement="vm.calendarView">
+                Précédent
+            </button>
+            <button class="btn btn-default ng-isolate-scope" mwl-date-modifier date="vm.calendarDay" set-to-today="">
+                Aujourd'hui
+            </button>
+            <button class="btn btn-primary ng-isolate-scope" mwl-date-modifier date="vm.calendarDay"
+                    increment="vm.calendarView">
+                Suivant
+            </button>
+        </div>
+    </div>
+    <br class="visible-xs visible-sm">
+
+    <div class="col-md-6 text-center">
+        <div class="btn-group">
+            <label class="btn btn-primary ng-pristine ng-untouched ng-valid active" ng-model="vm.calendarView"
+                   btn-radio="'month'">Mois</label>
+            <label class="btn btn-primary ng-pristine ng-untouched ng-valid" ng-model="vm.calendarView"
+                   btn-radio="'day'">Jour</label>
+        </div>
+    </div>
+    <h2>{{vm.calendarDay | amDateFormat:'DD MMMM YYYY'}}</h2>
+</div>
+<mwl-calendar
+    view="vm.calendarView"
+    current-day="vm.calendarDay"
+    events="vm.events"
+    view-title="vm.calendarTitle"
+    day-view-start="{{vm.dayStart}}"
+    day-view-end="{{vm.dayEnd}}"
+    on-event-click="vm.eventClicked(calendarEvent)"
+    on-event-times-changed="vm.eventTimesChanged(calendarEvent, calendarNewEventStart, calendarNewEventEnd)"
+    edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+    delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+    on-edit-event-click="vm.eventEdited(calendarEvent)"
+    on-delete-event-click="vm.eventDeleted(calendarEvent)"
+    on-timespan-click="vm.timeSpanClickDispatcher(calendarDate)"
+    auto-open="true"
+    cell-modifier="vm.cellModifier(calendarCell)"
+>
+</mwl-calendar>
