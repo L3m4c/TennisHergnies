@@ -11,7 +11,6 @@
             restrict: 'E',
             templateUrl: 'app/components/displayTicketInformationsDirective/displayTicketinformations.html',
             scope: {
-                ticket: '='
             },
             controller: displayTicketInformationsController,
             controllerAs: 'vm',

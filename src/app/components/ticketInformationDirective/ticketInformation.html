@@ -1,11 +1,10 @@
 <div class="row ticketInformation">
-    <h2 ng-show="!vm.editing">{{vm.id + "" + vm.title}}</h2>
-    <input ng-show="vm.editing" type="text" ng-model="vm.title">
-    <p ng-show="!vm.editing" ng-bind-html="vm.content"></p>
-    <text-angular ng-model="vm.content" ng-show="vm.editing"></text-angular>
-    <p>{{vm.modifiedDate | date:'yyyy-MM-dd'}}</p>
-    <button class="button" ng-show="!vm.editing" ng-click="vm.editing=true">Edit</button>
-    <button class="button" ng-show="vm.editing && (vm.id!=null)" ng-click="vm.updateTicket()">Save</button>
-    <button class="button" ng-show="vm.editing && (vm.id==null)" ng-click="vm.createTicket()">Create</button>
+    <h2 ng-show="!vm.editing">{{vm.ticket.id + "" + vm.ticket.title}}</h2>
+    <input ng-show="vm.editing" type="text" ng-model="vm.ticket.title">
+    <p ng-show="!vm.editing" ng-bind-html="vm.ticket.content"></p>
+    <text-angular ng-model="vm.ticket.content" ng-show="vm.editing"></text-angular>
+    <p>{{vm.ticket.modifiedDate | date:'yyyy-MM-dd'}}</p>
+    <button class="button" ng-show="vm.showEdit()" ng-click="vm.onEditClick()">Edit</button>
+    <button class="button" ng-show="vm.showSave()" ng-click="vm.updateTicket()">Save</button>
+    <button class="button" ng-show="vm.showCreate()" ng-click="vm.createTicket()">Create</button>
 </div>
-
