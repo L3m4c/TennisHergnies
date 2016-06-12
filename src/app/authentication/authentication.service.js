@@ -6,7 +6,7 @@
         .factory('AuthInterceptor', AuthInterceptor);
 
     /** @ngInject */
-    function AuthInterceptor(apiurl) {
+    function AuthInterceptor($cookies, apiurl) {
         var apiHost = apiurl;
 
         var service = {
@@ -17,9 +17,13 @@
         return service;
 
         function addToken(config) {
-            var token = "Basic dGVzdDp0ZXN0";
+            var token = $cookies.get("token");
             config.headers = config.headers || {};
-            config.headers.Authorization = token;
+            if (token != null || token != undefined || token != "") {
+                config.headers.Authorization = token;
+            } else {
+                config.headers.Authorization = null;
+            }
             return config;
         }
     }

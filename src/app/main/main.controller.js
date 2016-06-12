@@ -6,8 +6,7 @@
     .controller('MainController', MainController);
 
     /** @ngInject */
-    function MainController($log, ticketInformationService) {
+    function MainController() {
         var vm = this;
-
     }
 })();
