@@ -59,12 +59,12 @@
             }
         }
 
-        function updateReservation(id, startTime, endTime) {
+        function updateReservation(oldReservation, startTime, endTime) {
             var reservation = {};
-            reservation.id = id;
+            reservation.id = oldReservation.id;
             reservation.startTime = moment(startTime).valueOf();
             reservation.endTime = moment(endTime).valueOf();
-            reservation.user = loginService.getLoggedUser();
+            reservation.user = oldReservation.user;
             return $http.put(apiHost + 'reservation', reservation)
                 .then(updateReservationComplete)
                 .catch(updateReservationFailed);

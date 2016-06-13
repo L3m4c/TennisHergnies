@@ -48,7 +48,7 @@
             }
             vm.eventTimesChanged = function (calendarEvent, calendarNewEventStart, calendarNewEventEnd) {
                 //toastr.info("event \"" + calendarEvent.title + "\" dragged or resized");
-                reservation.updateReservation(calendarEvent.id, calendarNewEventStart, calendarNewEventEnd)
+                reservation.updateReservation(calendarEvent, calendarNewEventStart, calendarNewEventEnd)
                     .then(function(eventDto) {
                         vm.events = eventsUtils.updateEvent(vm.events, eventDto);
                     });
