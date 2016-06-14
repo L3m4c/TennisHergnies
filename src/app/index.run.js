@@ -21,7 +21,7 @@
 
                 var userInfo = $cookies.get("token");
 
-                if (userInfo === null || userInfo === undefined || userInfo === "") {
+                if (userInfo === null || angular.isUndefined(userInfo) || userInfo === "") {
                     e.preventDefault(); // stop current execution
                     $state.go('login'); // go to login
                 }

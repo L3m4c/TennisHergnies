@@ -40,7 +40,7 @@
             });
 
             vm.cellModifier = function(calendarCell) {
-                $log.log("cellModifier:" + JSON.stringify(calendarCell));
+                $log.log("cellModifier:" + angular.toJson(calendarCell));
             }
 
             vm.eventClicked = function (calendarEvent) {
@@ -59,7 +59,7 @@
             }
             vm.eventDeleted = function (calendarEvent) {
                 //toastr.info("event \"" + calendarEvent.title + "\" deleted");
-                reservation.deleteReservation(calendarEvent.id).then(function(resp) {
+                reservation.deleteReservation(calendarEvent.id).then(function() {
                     vm.events = eventsUtils.deleteEvent(vm.events, calendarEvent);
                 });
             }

@@ -6,7 +6,7 @@
         .service('eventsUtils', eventsUtils);
 
     /** @ngInject */
-    function eventsUtils(moment, toastr) {
+    function eventsUtils(moment) {
         var service = this;
 
         service._dayStart = '00:00';
@@ -57,39 +57,6 @@
         service.setDayEnd = function(hourAndMinute) {
             service._dayEnd = hourAndMinute;
         };
-        function verifyNewDateInRange(calendarNewEventStart, calendarNewEventEnd) {
-            var start = moment(calendarNewEventStart);
-            start.set('hour', getDayStart().format("HH"));
-            start.set('minute', getDayStart().format("mm"));
-            start.set('second', 0);
-            start.set('millisecond', 0);
-            start.subtract(1,'m');
-
-            var end = moment(calendarNewEventStart);
-            end.set('hour', getDayEndHour().format("HH"));
-            end.set('minute', getDayEndHour().format("mm"));
-            end.set('second', 0);
-            end.set('millisecond', 0);
-            end.add(1,'h');
-            end.add(1,'m');
-
-            if(moment(calendarNewEventStart).isAfter(start) && moment(calendarNewEventEnd).isBefore(end) ) {
-                return true;
-            } else {
-                toastr.error("Date not in range "+service._dayStart+" to "+service._dayEnd);
-                return false;
-            }
-        }
-
-        function verifyNewEventDurationLessOrEqualMaxEventDuration(calendarNewEventStart, calendarNewEventEnd) {
-            var durationStartPlusDurationMax = moment(calendarNewEventStart).add(service._maxEventDuration,'h');
-            if(moment(calendarNewEventEnd).isAfter(durationStartPlusDurationMax)) {
-                toastr.error("You can't book for more than "+service._maxEventDuration+" hours");
-                return false;
-            } else {
-                return true;
-            }
-        }
 
         function getDayStart() {
             return moment(service._dayStart, "HH:mm");
